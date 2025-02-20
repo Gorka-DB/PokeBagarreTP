@@ -1,8 +1,8 @@
 package com.montaury.pokebagarre.metier;
 
+import com.montaury.pokebagarre.fixtures.ConstructeurDePokemon;
 import org.assertj.core.api.Java6Assertions;
 import org.junit.jupiter.api.Test;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,10 +27,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class PokemonTests {
 
     @Test
-    public void test_attaque_plus_haute_gagne() {
+    public void pokemon_1_gagne_car_meilleure_attaque() {
         //GIVEN
-        Pokemon strongerPokemon = new Pokemon("Dracaufeu", "url", new Stats(80, 50));
-        Pokemon weakerPokemon = new Pokemon("Pikachu", "url", new Stats(60, 40));
+        Pokemon strongerPokemon = new ConstructeurDePokemon().avecAttaque(80).avecDefense(50).construire();
+        Pokemon weakerPokemon = new ConstructeurDePokemon().avecAttaque(60).avecDefense(40).construire();
+
+        //Pokemon strongerPokemon = new Pokemon("Dracaufeu", "url", new Stats(80, 50));
+        //Pokemon weakerPokemon = new Pokemon("Pikachu", "url", new Stats(60, 40));
 
         //WHEN
         boolean resultat = strongerPokemon.estVainqueurContre(weakerPokemon);
